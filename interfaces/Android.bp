@@ -1,4 +1,4 @@
 hidl_package_root {
     name: "vendor.samsung.hardware",
-    path: "device/samsung/a51/interfaces",
+    path: "device/samsung/a50/interfaces",
 }

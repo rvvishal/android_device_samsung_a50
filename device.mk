@@ -28,13 +28,9 @@ TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
-# fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
-
 # Fingerprint feature
 PRODUCT_PACKAGES += \
-    lineage.biometrics.fingerprint.inscreen@1.0-service.a51
+    lineage.biometrics.fingerprint.inscreen@1.0-service.a50
 
 PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
@@ -56,7 +52,7 @@ PRODUCT_COPY_FILES += \
 
 # Rootdir
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.exynos9611:$(TARGET_COPY_OUT_RAMDISK)/fstab.exynos9611
+    $(LOCAL_PATH)/rootdir/fstab.exynos9610:$(TARGET_COPY_OUT_RAMDISK)/fstab.exynos9610
 
 # Screen density
 # Device uses high-density artwork where available
@@ -66,10 +62,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Shipping API
-PRODUCT_SHIPPING_API_LEVEL := 29
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
 # Inherit device vendor
-$(call inherit-product-if-exists, vendor/samsung/a51/a51-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/a50/a50-vendor.mk)

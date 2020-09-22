@@ -18,7 +18,7 @@
 set -e
 
 # Required!
-export DEVICE=a51
+export DEVICE=a50
 export DEVICE_COMMON=universal9610-common
 export VENDOR=samsung
 
