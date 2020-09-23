@@ -1,5 +1,8 @@
+#!/bin/env python3
 #
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2019 The Mokee Open Source Project
+# Copyright (C) 2019-2020 The LineageOS Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,23 +17,23 @@
 # limitations under the License.
 
 import common
+import re
 
 def FullOTA_InstallEnd(info):
-    OTA_InstallEnd(info)
+  OTA_InstallEnd(info)
+  return
 
 def IncrementalOTA_InstallEnd(info):
-    OTA_InstallEnd(info)
+  OTA_InstallEnd(info)
+  return
 
 def AddImage(info, basename, dest):
-    path = "IMAGES/" + basename
-    if path not in info.input_zip.namelist():
-        return
-
-    data = info.input_zip.read(path)
-    common.ZipWriteStr(info.output_zip, basename, data)
-    info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
-    info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
+  name = basename
+  data = info.input_zip.read("IMAGES/" + basename)
+  common.ZipWriteStr(info.output_zip, name, data)
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
 
 def OTA_InstallEnd(info):
-    AddImage(info, "dtbo.img", "/dev/block/by-name/dtbo")
-    AddImage(info, "vbmeta.img", "/dev/block/by-name/vbmeta_samsung")
+  info.script.Print("Patching firmware images...")
+  AddImage(info, "dtbo.img", "/dev/block/by-name/dtbo")
+  return
